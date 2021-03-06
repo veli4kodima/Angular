@@ -1,0 +1,29 @@
+<tr>
+  <td>btn</td>
+  <td *ngFor="let day of daysOfMonth">
+    <div>
+      {{ day["dayName"] }}
+    </div>
+    <div>
+      {{ day["numberDay"] }}
+    </div>
+  </td>
+</tr>
+
+<ng-container *ngFor="let team of teams">
+  <tr>
+    <td [className]="'teamName'">{{ team["name"] }}</td>
+    <td *ngFor="let day of daysOfMonth">
+      {{ day["numberDay"] }}
+    </td>
+  </tr>
+  <tr *ngFor="let userName of team['members']">
+    <td [className]="'userName'">{{ userName["name"] }}</td>
+    <td *ngFor="let day of daysOfMonth">
+      {{ day["numberDay"] }}
+    </td>
+  </tr>
+  <tr>
+    <td [className]="'separator'"></td>
+  </tr>
+</ng-container>
