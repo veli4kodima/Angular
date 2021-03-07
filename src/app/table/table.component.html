@@ -1,29 +1,72 @@
-<tr>
-  <td>btn</td>
-  <td *ngFor="let day of daysOfMonth">
-    <div>
-      {{ day["dayName"] }}
-    </div>
-    <div>
-      {{ day["numberDay"] }}
-    </div>
-  </td>
-</tr>
+<table [className]="'table'">
+  <tr>
+    <th>btn</th>
+    <ng-container *ngFor="let day of daysOfMonth">
+      <th
+        [className]="'table__cell dayoff'"
+        *ngIf="
+          day['dayName'] === 'Sun' || day['dayName'] === 'Sat';
+          else noDayOff
+        "
+      >
+        <div>
+          <div [className]="'table__dayName'">
+            {{ day["dayName"] }}
+          </div>
+        </div>
+        <div [className]="'table__numberDay'">
+          {{ day["numberDay"] }}
+        </div>
+      </th>
 
-<ng-container *ngFor="let team of teams">
-  <tr>
-    <td [className]="'teamName'">{{ team["name"] }}</td>
-    <td *ngFor="let day of daysOfMonth">
-      {{ day["numberDay"] }}
-    </td>
+      <ng-template #noDayOff>
+        <th [className]="'table__cell'">
+          <div>
+            <div [className]="'table__dayName'">
+              {{ day["dayName"] }}
+            </div>
+          </div>
+          <div [className]="'table__numberDay'">
+            {{ day["numberDay"] }}
+          </div>
+        </th>
+      </ng-template>
+    </ng-container>
   </tr>
-  <tr *ngFor="let userName of team['members']">
-    <td [className]="'userName'">{{ userName["name"] }}</td>
-    <td *ngFor="let day of daysOfMonth">
-      {{ day["numberDay"] }}
-    </td>
-  </tr>
-  <tr>
-    <td [className]="'separator'"></td>
-  </tr>
-</ng-container>
+
+  <ng-container *ngFor="let team of teams">
+    <tr>
+      <td [className]="'table__name'">{{ team["name"] }}</td>
+      <ng-container *ngFor="let day of daysOfMonth">
+        <td
+          [className]="'table__cell dayoff'"
+          *ngIf="
+            day['dayName'] === 'Sun' || day['dayName'] === 'Sat';
+            else noDayOff
+          "
+        ></td>
+        <ng-template #noDayOff>
+          <td [className]="'table__cell'"></td>
+        </ng-template>
+      </ng-container>
+    </tr>
+    <tr *ngFor="let userName of team['members']">
+      <td [className]="'table__name'">{{ userName["name"] }}</td>
+      <ng-container *ngFor="let day of daysOfMonth">
+        <td
+          [className]="'table__cell dayoff'"
+          *ngIf="
+            day['dayName'] === 'Sun' || day['dayName'] === 'Sat';
+            else noDayOff
+          "
+        ></td>
+        <ng-template #noDayOff>
+          <td [className]="'table__cell'"></td>
+        </ng-template>
+      </ng-container>
+    </tr>
+    <tr>
+      <td [className]="'separator'"></td>
+    </tr>
+  </ng-container>
+</table>

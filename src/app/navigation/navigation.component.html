@@ -1,4 +1,5 @@
-<div>{{ date | date: "MMMM" }}</div>
-
-<button (click)="changeDate($event)" name="previous">←</button>
-<button (click)="changeDate($event)" name="next">→</button>
+<div [className] = "'navigation'">
+  <button (click)="changeDate($event)" name="previous" [className] = "'navigation__btn'">←</button>
+  <div [className] = "'navigation__date'">{{ date | date: "MMMM" }}</div>
+  <button (click)="changeDate($event)" name="next" [className] = "'navigation__btn'">→</button>
+</div>
