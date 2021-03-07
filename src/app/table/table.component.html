@@ -1,29 +1,47 @@
-<tr>
-  <td>btn</td>
-  <td *ngFor="let day of daysOfMonth">
-    <div>
-      {{ day["dayName"] }}
-    </div>
-    <div>
-      {{ day["numberDay"] }}
-    </div>
-  </td>
-</tr>
+<thead class="calendar-table__head">
+  <tr class="calendar-table__head-row">
+    <th class="calendar-table__head-column calendar-table__head-column--btn-cell">
+      <button class="calendar-table__add-vacation-button">Add Vacation</button>
+    </th>
+    <th *ngFor="let day of daysOfMonth" class="calendar-table__head-column">
+      <span class="calendar-table__head-week-day">
+        {{ day["dayName"] }}
+      </span>
+      <span class="calendar-table__month-day">
+        {{ day["numberDay"] }}
+      </span>
+    </th>
+    <th class="calendar-table__head-column calendar-table__head-column--sum-cell">Sum</th>
+  </tr>
+</thead>
 
-<ng-container *ngFor="let team of teams">
-  <tr>
-    <td [className]="'teamName'">{{ team["name"] }}</td>
-    <td *ngFor="let day of daysOfMonth">
-      {{ day["numberDay"] }}
-    </td>
-  </tr>
-  <tr *ngFor="let userName of team['members']">
-    <td [className]="'userName'">{{ userName["name"] }}</td>
-    <td *ngFor="let day of daysOfMonth">
-      {{ day["numberDay"] }}
-    </td>
-  </tr>
-  <tr>
-    <td [className]="'separator'"></td>
-  </tr>
-</ng-container>
+<tbody class="calendar-table__body">
+  <ng-container *ngFor="let team of teams">
+    <tr class="calendar-table__body-row teamColor1 team1 team-first-row">
+      <td class="calendar-table__body-first-column first-column">
+        <div class="team-info-cell">
+          <span class="team-info-cell__team-name">{{ team["name"] }}</span>
+          <div class="team-info-cell__wrapper">
+            <div class="team-info-cell__number-people">2</div>
+            <div class="team-info-cell__percent">0%</div>
+            <div class="team-info-cell__collapse"></div>
+          </div>
+        </div>
+      </td>
+      <td *ngFor="let day of daysOfMonth">
+        
+      </td>
+      <td class="calendar-table__body-column sum-cell"></td>
+    </tr>
+    <tr *ngFor="let userName of team['members']" class=" calendar-table__body-row teamColor1 team1 ">
+      <td class="calendar-table__body-first-column first-column">{{ userName["name"] }}</td>
+      <td *ngFor="let day of daysOfMonth" class="calendar-table__body-column">
+        {{ day["numberDay"] }}
+      </td>
+      <td class="calendar-table__body-column sum-cell"></td>
+    </tr>
+    <tr class=" calendar-table__body-row teamColor1 team1 team-last-row ">
+      <!-- <td [className]="'separator'" ></td> -->
+    </tr>
+  </ng-container>
+</tbody>
