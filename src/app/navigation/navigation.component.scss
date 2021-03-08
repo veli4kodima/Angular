@@ -1,0 +1,17 @@
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 226px;
+    margin: 20px auto;
+    &__btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: all .2s ease;
+        outline: none;
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+}
