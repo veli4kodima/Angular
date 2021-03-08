@@ -1,72 +1,47 @@
-<table [className]="'table'">
-  <tr>
-    <th>btn</th>
-    <ng-container *ngFor="let day of daysOfMonth">
-      <th
-        [className]="'table__cell dayoff'"
-        *ngIf="
-          day['dayName'] === 'Sun' || day['dayName'] === 'Sat';
-          else noDayOff
-        "
-      >
-        <div>
-          <div [className]="'table__dayName'">
-            {{ day["dayName"] }}
-          </div>
-        </div>
-        <div [className]="'table__numberDay'">
-          {{ day["numberDay"] }}
-        </div>
-      </th>
-
-      <ng-template #noDayOff>
-        <th [className]="'table__cell'">
-          <div>
-            <div [className]="'table__dayName'">
-              {{ day["dayName"] }}
-            </div>
-          </div>
-          <div [className]="'table__numberDay'">
-            {{ day["numberDay"] }}
-          </div>
-        </th>
-      </ng-template>
-    </ng-container>
+<thead class="calendar-table__head">
+  <tr class="calendar-table__head-row">
+    <th class="calendar-table__head-column calendar-table__head-column--btn-cell">
+      <button class="calendar-table__add-vacation-button">Add Vacation</button>
+    </th>
+    <th *ngFor="let day of daysOfMonth" class="calendar-table__head-column">
+      <span class="calendar-table__head-week-day">
+        {{ day["dayName"] }}
+      </span>
+      <span class="calendar-table__month-day">
+        {{ day["numberDay"] }}
+      </span>
+    </th>
+    <th class="calendar-table__head-column calendar-table__head-column--sum-cell">Sum</th>
   </tr>
+</thead>
 
+<tbody class="calendar-table__body">
   <ng-container *ngFor="let team of teams">
-    <tr>
-      <td [className]="'table__name'">{{ team["name"] }}</td>
-      <ng-container *ngFor="let day of daysOfMonth">
-        <td
-          [className]="'table__cell dayoff'"
-          *ngIf="
-            day['dayName'] === 'Sun' || day['dayName'] === 'Sat';
-            else noDayOff
-          "
-        ></td>
-        <ng-template #noDayOff>
-          <td [className]="'table__cell'"></td>
-        </ng-template>
-      </ng-container>
+    <tr class="calendar-table__body-row teamColor1 team1 team-first-row">
+      <td class="calendar-table__body-first-column first-column">
+        <div class="team-info-cell">
+          <span class="team-info-cell__team-name">{{ team["name"] }}</span>
+          <div class="team-info-cell__wrapper">
+            <div class="team-info-cell__number-people">2</div>
+            <div class="team-info-cell__percent">0%</div>
+            <div class="team-info-cell__collapse"></div>
+          </div>
+        </div>
+      </td>
+      <td *ngFor="let day of daysOfMonth">
+        
+      </td>
+      <td class="calendar-table__body-column sum-cell"></td>
     </tr>
-    <tr *ngFor="let userName of team['members']">
-      <td [className]="'table__name'">{{ userName["name"] }}</td>
-      <ng-container *ngFor="let day of daysOfMonth">
-        <td
-          [className]="'table__cell dayoff'"
-          *ngIf="
-            day['dayName'] === 'Sun' || day['dayName'] === 'Sat';
-            else noDayOff
-          "
-        ></td>
-        <ng-template #noDayOff>
-          <td [className]="'table__cell'"></td>
-        </ng-template>
-      </ng-container>
+    <tr *ngFor="let userName of team['members']" class=" calendar-table__body-row teamColor1 team1 ">
+      <td class="calendar-table__body-first-column first-column">{{ userName["name"] }}</td>
+      <td *ngFor="let day of daysOfMonth" class="calendar-table__body-column">
+        {{ day["numberDay"] }}
+      </td>
+      <td class="calendar-table__body-column sum-cell"></td>
     </tr>
-    <tr>
-      <td [className]="'separator'"></td>
+    <tr class=" calendar-table__body-row teamColor1 team1 team-last-row ">
+      <!-- <td [className]="'separator'" ></td> -->
     </tr>
   </ng-container>
-</table>
+</tbody>
