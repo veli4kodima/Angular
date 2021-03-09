@@ -3,7 +3,9 @@
     <th class="calendar-table__head-column calendar-table__head-column--btn-cell">
       <button class="calendar-table__add-vacation-button">Add Vacation</button>
     </th>
-    <th *ngFor="let day of daysOfMonth" class="calendar-table__head-column">
+    <th *ngFor="let day of daysOfMonth" class="calendar-table__head-column" [ngClass]="{
+      weekend: day['dayName'] === 'Sun' || day['dayName'] === 'Sat'
+    }">
       <span class="calendar-table__head-week-day">
         {{ day["dayName"] }}
       </span>
@@ -17,7 +19,7 @@
 
 <tbody class="calendar-table__body">
   <ng-container *ngFor="let team of teams">
-    <tr class="calendar-table__body-row teamColor1 team1 team-first-row">
+    <tr class="calendar-table__body-row team1  team-first-row"  [ngClass]="'teamColor' + (teams.indexOf(team) % 4 + 1)">
       <td class="calendar-table__body-first-column first-column">
         <div class="team-info-cell">
           <span class="team-info-cell__team-name">{{ team["name"] }}</span>
@@ -28,14 +30,16 @@
           </div>
         </div>
       </td>
-      <td *ngFor="let day of daysOfMonth">
+      <td *ngFor="let day of daysOfMonth" class="calendar-table__body-column">
         
       </td>
       <td class="calendar-table__body-column sum-cell"></td>
     </tr>
-    <tr *ngFor="let userName of team['members']" class=" calendar-table__body-row teamColor1 team1 ">
+    <tr *ngFor="let userName of team['members']" class=" calendar-table__body-row team1"  [ngClass]="'teamColor' + (teams.indexOf(team) % 4 + 1)">
       <td class="calendar-table__body-first-column first-column">{{ userName["name"] }}</td>
-      <td *ngFor="let day of daysOfMonth" class="calendar-table__body-column">
+      <td *ngFor="let day of daysOfMonth" class="calendar-table__body-column" [ngClass]="{
+        weekend: day['dayName'] === 'Sun' || day['dayName'] === 'Sat'
+      }">
         {{ day["numberDay"] }}
       </td>
       <td class="calendar-table__body-column sum-cell"></td>
