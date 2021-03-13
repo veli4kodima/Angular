@@ -21,13 +21,13 @@ export class TeamsService {
                 name: 'FE_Team_User1',
                 vacations: [
                   {
-                    startDate: '20.12.2020',
-                    endDate: '22.12.2020',
+                    startDate: '20.03.2021',
+                    endDate: '28.03.2021',
                     type: 'Paid',
                   },
                   {
-                    startDate: '20.11.2020',
-                    endDate: '22.11.2020',
+                    startDate: '10.03.2021',
+                    endDate: '16.03.2021',
                     type: 'Paid',
                   },
                 ],
