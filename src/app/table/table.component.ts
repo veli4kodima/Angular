@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -12,8 +12,6 @@ export class TableComponent implements OnChanges {
   daysOfMonth = [];
   dayInMonth: number;
   holidays: any;
-
-
 
   ngOnChanges(): void {
     this.daysOfMonth = [];

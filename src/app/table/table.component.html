@@ -30,10 +30,9 @@
     </tr>
     <tr *ngFor="let userName of team['members']" class=" calendar-table__body-row team1"  [ngClass]="'teamColor' + (teams.indexOf(team) % 4 + 1)" [hidden]="isDisplay">
       <td class="calendar-table__body-first-column first-column">{{ userName["name"] }}</td>
-      <td *ngFor="let day of daysOfMonth;" class="calendar-table__body-column" [ngClass]="{
+      <td [app-cell] [dayInMonth]='dayInMonth' [daysOfMonth]="daysOfMonth" [holidays]="holidays" [team]='team' [date]='date' *ngFor="let day of daysOfMonth;" [ngClass]="{
         weekend: day['dayName'] === 'Sun' || day['dayName'] === 'Sat'
-      }">
-          
+        }" class="calendar-table__body-column">
       </td>
       <td class="calendar-table__body-column sum-cell"></td>
     </tr>
