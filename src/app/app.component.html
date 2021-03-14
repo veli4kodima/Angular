@@ -1,9 +1,10 @@
-<div class="calendar">
+<div *ngIf="isLoaded; else noCards"  class="calendar">
+  <app-modal></app-modal>
   <app-navigation
   [date]="date"
   (onChange)="changeDate($event)"
 ></app-navigation>
-  <table *ngIf="isLoaded; else noCards" class="calendar-table">
+  <table class="calendar-table">
     <app-table [teams]="teams" [date]="date"></app-table>
   </table>
 </div>

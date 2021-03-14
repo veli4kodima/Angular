@@ -1,0 +1,31 @@
+<div class="modal__overlay" id="modal__overlay">
+  <div class="modal">
+    <div class="modal__header">
+      <div class="modal__name">Vacation Request</div>
+      <div class="modal__days">8 Days</div>
+    </div>
+    <div class="modal__body">
+      <div class="modal__title">Dates</div>
+      <div class="modal_dates_inner">
+        <div class="modal__column">
+          <div class="modal__subtitle">From</div>
+          <div class="modal__date">15.06.2020</div>
+        </div>
+        <div class="modal__column">
+          <div class="modal__subtitle">To</div>
+          <div class="modal__date">18.06.2020</div>
+        </div>
+      </div>
+      <div class="modal__title">Vac Type</div>
+
+      <select class="modal__dropdown">
+        <option>Paid Day Off (PD)</option>
+        <option>UnPaid Day Off (UD)</option>
+      </select>
+      <div class="modal__footer">
+        <button class="modal__btn modal__btn-cancel" (click)="closeModal()">Cancel</button>
+        <button class="modal__btn modal__btn-send">Send</button>
+      </div>
+    </div>
+  </div>
+</div>

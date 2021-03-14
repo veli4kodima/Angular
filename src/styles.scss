@@ -44,6 +44,10 @@ body {
 
 .calendar {
   padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .calendar-bar {
@@ -215,6 +219,7 @@ body {
 }
 
 .calendar-table {
+  width: 100%;
   border-collapse: collapse;
   padding: 0 15px;
   box-sizing: border-box;
