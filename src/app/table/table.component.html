@@ -18,15 +18,15 @@
 </thead>
 
 <tbody class="calendar-table__body">
-  <ng-container *ngFor="let team of teams">
-    <tr class="calendar-table__body-row team1  team-first-row"  [ngClass]="'teamColor' + (teams.indexOf(team) % 4 + 1)">
+  <ng-container *ngFor="let team of teams;">
+    <tr class="calendar-table__body-row team-first-row" [ngClass]="'teamColor' + (teams.indexOf(team) % 4 + 1)">
       <td class="calendar-table__body-first-column first-column">
         <div class="team-info-cell">
           <span class="team-info-cell__team-name">{{ team["name"] }}</span>
           <div class="team-info-cell__wrapper">
-            <div class="team-info-cell__number-people">2</div>
-            <div class="team-info-cell__percent">0%</div>
-            <div class="team-info-cell__collapse"></div>
+            <div class="team-info-cell__number-people">{{ team.members.length }}</div>
+            <div class="team-info-cell__percent">{{ team.percentageOfAbsent[ (date | date: "M") - 1 ] }}%</div>
+            <div class="team-info-cell__collapse" (click) = 'toggleDisplay()'></div>
           </div>
         </div>
       </td>
@@ -35,9 +35,9 @@
       </td>
       <td class="calendar-table__body-column sum-cell"></td>
     </tr>
-    <tr *ngFor="let userName of team['members']" class=" calendar-table__body-row team1"  [ngClass]="'teamColor' + (teams.indexOf(team) % 4 + 1)">
+    <tr *ngFor="let userName of team['members']" class=" calendar-table__body-row team1"  [ngClass]="'teamColor' + (teams.indexOf(team) % 4 + 1)" [hidden]="isDisplay">
       <td class="calendar-table__body-first-column first-column">{{ userName["name"] }}</td>
-      <td *ngFor="let day of daysOfMonth" class="calendar-table__body-column" [ngClass]="{
+      <td *ngFor="let day of daysOfMonth; index as i" class="calendar-table__body-column" [ngClass]="{
         weekend: day['dayName'] === 'Sun' || day['dayName'] === 'Sat'
       }">
         {{ day["numberDay"] }}

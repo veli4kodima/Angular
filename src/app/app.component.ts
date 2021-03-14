@@ -22,5 +22,9 @@ export class AppComponent implements OnInit {
 
   public changeDate(date: Date) {
     this.date = date;
+    
+    console.log(this.teams);
   }
+
+  
 }
