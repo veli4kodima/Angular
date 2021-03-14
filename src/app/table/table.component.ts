@@ -49,7 +49,6 @@ export class TableComponent implements OnChanges {
         } 
       } 
     }
-    console.log(this.teams);
     console.log(this.holidays);
   }
 
@@ -58,6 +57,11 @@ export class TableComponent implements OnChanges {
   toggleDisplay(): void {
     this.isDisplay = !this.isDisplay;
   }
+
+  public addVacantion(event): void {
+    document.getElementById('modal__overlay').style.display = 'block';
+   }
+  
 
 
 }

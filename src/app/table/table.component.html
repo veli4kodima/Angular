@@ -1,7 +1,7 @@
 <thead class="calendar-table__head">
   <tr class="calendar-table__head-row">
     <th class="calendar-table__head-column calendar-table__head-column--btn-cell">
-      <button class="calendar-table__add-vacation-button">Add Vacation</button>
+      <button class="calendar-table__add-vacation-button" (click)="addVacantion($event)">Add Vacation</button>
     </th>
     <th *ngFor="let day of daysOfMonth" class="calendar-table__head-column" [ngClass]="{
       weekend: day['dayName'] === 'Sun' || day['dayName'] === 'Sat'
@@ -40,7 +40,7 @@
       <td *ngFor="let day of daysOfMonth; index as i" class="calendar-table__body-column" [ngClass]="{
         weekend: day['dayName'] === 'Sun' || day['dayName'] === 'Sat'
       }">
-        {{ day["numberDay"] }}
+          
       </td>
       <td class="calendar-table__body-column sum-cell"></td>
     </tr>
