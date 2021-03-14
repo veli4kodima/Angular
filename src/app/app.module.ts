@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ModalComponent } from './modal/modal.component';
+import { TeamInfoRowComponent } from './team-info-row/team-info-row.component';
 
 @NgModule({
-  declarations: [AppComponent, TableComponent, NavigationComponent, ModalComponent],
+  declarations: [AppComponent, TableComponent, NavigationComponent, ModalComponent, TeamInfoRowComponent],
   imports: [BrowserModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

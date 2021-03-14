@@ -49,14 +49,10 @@ export class TableComponent implements OnChanges {
         } 
       } 
     }
-    console.log(this.holidays);
+    // console.log(this.holidays);
   }
 
-  isDisplay:boolean = false;
-
-  toggleDisplay(): void {
-    this.isDisplay = !this.isDisplay;
-  }
+  
 
   public addVacantion(event): void {
     document.getElementById('modal__overlay').style.display = 'block';
