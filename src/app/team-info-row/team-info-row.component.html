@@ -1,0 +1,10 @@
+<div class="team-info-cell">
+  <span class="team-info-cell__team-name">{{ team["name"] }}</span>
+  <div class="team-info-cell__wrapper">
+    <div class="team-info-cell__number-people">{{ team.members.length }}</div>
+    <div class="team-info-cell__percent">
+      {{ team.percentageOfAbsent[(date | date: "M") - 1] }}%
+    </div>
+    <div class="team-info-cell__collapse" (click)="toggleDisplay($event)"></div>
+  </div>
+</div>
